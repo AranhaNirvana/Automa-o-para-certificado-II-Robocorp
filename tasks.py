@@ -5,7 +5,7 @@ from RPA.HTTP import HTTP
 from RPA.Tables import Tables
 from RPA.PDF import PDF
 from RPA.Archive import Archive
-
+import os
 
 @task
 def order_robots_from_RobotSpareBin():
@@ -16,6 +16,12 @@ def order_robots_from_RobotSpareBin():
     Embeds the screenshot of the robot to the PDF receipt.
     Creates ZIP archive of the receipts and the images.
     """
+
+
+    os.makedirs("robots/pdfs", exist_ok=True)
+    os.makedirs("robots/robots_pngs", exist_ok=True)
+
+
     browser.configure(
         slowmo=100,
     )
